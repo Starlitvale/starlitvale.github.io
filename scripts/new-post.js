@@ -42,6 +42,7 @@ tags: []
 category: ""
 draft: true
 lang: "" # 留空使用网站的中文设置；英文文章可填 en
+typora-copy-images-to: ${JSON.stringify(`./${path.parse(fileName).name}.assets`)}
 ---
 
 从这里开始写正文。
@@ -54,6 +55,8 @@ lang: "" # 留空使用网站的中文设置；英文文章可填 en
 
 console.log(`已创建草稿：${fullPath}`);
 console.log("这是 Markdown（.md）文件，可以直接用 Typora 编辑和保存。");
+console.log("插入的图片请保存在文章旁的 .assets 文件夹，图片路径使用相对路径。");
+console.log("Typora 图像设置请勾选“优先使用相对路径”和“插入时自动转义图片 URL”，避免文件名带空格时无法显示。");
 console.log("准备好公开时，将 draft: true 改成 draft: false，再双击“发布博客.cmd”。");
 if (interactive && process.platform === "win32") {
   const editor = spawn("explorer.exe", [fullPath], { detached: true, stdio: "ignore", windowsHide: true });
