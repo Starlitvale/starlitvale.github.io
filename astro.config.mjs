@@ -29,6 +29,9 @@ export default defineConfig({
 	site: "https://starlitvale.github.io/",
 	base: "/",
 	trailingSlash: "always",
+	redirects: {
+		"/posts/hello-world/": "/posts/dairy1/",
+	},
 	integrations: [
 		tailwind({
 			nesting: true,

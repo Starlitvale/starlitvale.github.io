@@ -11,9 +11,11 @@ interface Props {
 }
 
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import { url } from "../../utils/url-utils";
 
-const { id, src, alt, position = "center", basePath = "/" } = Astro.props;
+const { id, src: configuredSrc, alt, position = "center", basePath = "/" } = Astro.props;
+const src = configuredSrc.trim();
 const className = Astro.props.class;
 
 const isLocal = !(
@@ -26,22 +28,28 @@ const isPublic = src.startsWith("/");
 
 // TODO temporary workaround for images dynamic import
 // https://github.com/withastro/astro/issues/3373
-// biome-ignore lint/suspicious/noImplicitAnyLet: <check later>
-let img;
-if (isLocal) {
-	const files = import.meta.glob<ImageMetadata>("../../**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}", {
+let img: ImageMetadata | undefined;
+if (isLocal && src) {
+	const files = import.meta.glob<ImageMetadata>("../../**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG,AVIF}", {
 		import: "default",
 	});
-	let normalizedPath = path
-		.normalize(path.join("../../", basePath, src))
-		.replace(/\\/g, "/");
-	const file = files[normalizedPath];
+	const normalizedPath = path.posix.join("../../", basePath.replace(/\\/g, "/"), src.replace(/\\/g, "/"));
+	let file = files[normalizedPath];
+	// Typora may encode spaces and Chinese characters in image paths.
 	if (!file) {
-		console.error(
-			`\n[ERROR] Image file not found: ${normalizedPath.replace("../../", "src/")}`,
+		try {
+			file = files[decodeURIComponent(normalizedPath)];
+		} catch {
+			// A literal percent sign in a filename is not necessarily URL encoding.
+		}
+	}
+	if (file) {
+		img = await file();
+	} else {
+		console.warn(
+			`[图片未显示] 找不到 ${normalizedPath.replace(/^\.\.\/\.\.\//, "src/")}。请检查 image 中的文件路径；封面只填写路径，不要填写 ![]() 或电脑绝对路径。`,
 		);
 	}
-	img = await file();
 }
 
 const imageClass = "w-full h-full object-cover";
