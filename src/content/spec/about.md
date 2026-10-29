@@ -4,7 +4,7 @@
 
 这里将用于记录与分享，更多内容正在准备中。
 
-你可以通过 [RSS](/rss.xml) 订阅更新，也可以在 [GitHub](https://github.com/Asterford) 找到我。
+你可以通过 [RSS](/rss.xml) 订阅更新，也可以在 [GitHub](https://github.com/Starlitvale) 找到我。
 
 ---
 

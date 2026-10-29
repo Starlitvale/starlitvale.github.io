@@ -41,7 +41,7 @@ image: ""
 tags: []
 category: ""
 draft: true
-lang: ""
+lang: "" # 留空使用网站的中文设置；英文文章可填 en
 ---
 
 从这里开始写正文。
@@ -53,9 +53,10 @@ lang: ""
 }
 
 console.log(`已创建草稿：${fullPath}`);
+console.log("这是 Markdown（.md）文件，可以直接用 Typora 编辑和保存。");
 console.log("准备好公开时，将 draft: true 改成 draft: false，再双击“发布博客.cmd”。");
 if (interactive && process.platform === "win32") {
-  const editor = spawn("notepad.exe", [fullPath], { detached: true, stdio: "ignore" });
-  editor.on("error", () => console.log("请用文本编辑器打开上面的文件。"));
+  const editor = spawn("explorer.exe", [fullPath], { detached: true, stdio: "ignore", windowsHide: true });
+  editor.on("error", () => console.log("请用 Typora 或其他 Markdown 编辑器打开上面的 .md 文件。"));
   editor.unref();
 }
