@@ -2,8 +2,8 @@
 
 使用 Astro + Fuwari 构建，通过 GitHub Actions 自动部署到 GitHub Pages。
 
-- 网站：[monitor666.github.io](https://monitor666.github.io/)
-- [部署状态](https://github.com/monitor666/monitor666.github.io/actions)
+- 网站：[asterford.github.io](https://asterford.github.io/)
+- [部署状态](https://github.com/Asterford/asterford.github.io/actions)
 - [写作与维护指南](docs/维护指南.md)
 
 ## 本地运行

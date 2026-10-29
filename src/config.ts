@@ -46,7 +46,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "GitHub",
-			url: "https://github.com/monitor666", // Internal links should not include the base path, as it is automatically added
+			url: "https://github.com/Asterford", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
@@ -54,18 +54,18 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "/avatar.png", // Local copy of the public GitHub avatar
-	name: "monitor666",
+	name: "Asterford",
 	bio: "记录与分享",
 	links: [
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: "https://github.com/monitor666",
+			url: "https://github.com/Asterford",
 		},
 		{
 			name: "RSS",
 			icon: "fa6-solid:rss",
-			url: "https://monitor666.github.io/rss.xml",
+			url: "https://asterford.github.io/rss.xml",
 		},
 	],
 };

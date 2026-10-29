@@ -24,7 +24,7 @@ try {
     throw new Error("请在博客的 main 分支发布。");
   }
   const remote = git(["remote", "get-url", "origin"], true);
-  if (!/^https:\/\/github\.com\/monitor666\/monitor666\.github\.io(?:\.git)?\/?$/.test(remote)) {
+  if (!/^https:\/\/github\.com\/Asterford\/asterford\.github\.io(?:\.git)?\/?$/i.test(remote)) {
     throw new Error("origin 不是此博客的 GitHub 仓库，请先检查远程地址。");
   }
   console.log("正在检查文章并生成网站……");
@@ -35,8 +35,8 @@ try {
   }
   git(["push", "origin", "main"]);
   console.log("\n已推送到 GitHub，正在由 Actions 自动部署。部署结果：");
-  console.log("https://github.com/monitor666/monitor666.github.io/actions");
-  console.log("部署完成后访问：https://monitor666.github.io/");
+  console.log("https://github.com/Asterford/asterford.github.io/actions");
+  console.log("部署完成后访问：https://asterford.github.io/");
 } catch (error) {
   console.error(`\n发布未完成：${error.message}`);
   process.exitCode = 1;
