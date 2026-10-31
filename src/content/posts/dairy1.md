@@ -1,5 +1,5 @@
 ---
-title: "日记-大四1"
+title: "大四-随笔1"
 published: 2026-10-29
 description: "机器狗部署PPT_一张整体框架图"
 image: "./sbwck.assets/image-20261029211357992.png"
